@@ -18,8 +18,13 @@ app.get("/", (req,res) => {
 })
 
 app.get("/ping", async (req, res) => {
-  const result = await pool.query('SELECT NOW()')
-  res.json(result.rows[0])
+    try {
+        const result = await pool.query('SELECT NOW()')
+        res.json(result.rows[0])        
+    } catch (error) {
+        console.error('error #%d', error)
+    }
+
 })
 
 app.listen(PORT, () => {
