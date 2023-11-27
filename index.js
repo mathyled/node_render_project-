@@ -20,7 +20,7 @@ app.get("/", (req,res) => {
 app.get("/ping", async (req, res) => {
     try {
         const result = await pool.query('SELECT NOW()')
-        res.json(result.rows[0])        
+       return res.json(result.rows[0])        
     } catch (error) {
         console.error('error #%d', error)
     }
